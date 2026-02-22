@@ -1,2 +1,2 @@
 # highschool
-Codes I made in high school
+Codes made in high school
