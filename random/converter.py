@@ -1,3 +1,4 @@
+# This code allows you to convert between decimal and binary numbers and the characters they encode
 def removing_zeros(number):
   while number[0] == 0:
     number = number[1:]
@@ -54,11 +55,11 @@ def bytes(bin_):
 print("Type:") # Instructions for user
 print("1 to convert binary number to decimal")
 print("2 to convert decimal number to binary")
-print("3 to convert signs to their binary equivalent (in bytes)")
-print("4 to convert signs to their decimal equivalent (based on binary ones)")
-print("5 to convert decimal numbers to signs")
-print("6 to convert binary number to sign (only one)") # Signs can be composed of different numbers of bytes
-print("7 to convert bytes to signs (only or one-byted signs, BYTES HAVE TO BE SEPARATED BY SPACE)")
+print("3 to convert characters to their binary equivalent (in bytes)")
+print("4 to convert characters to their decimal equivalent (based on binary ones)")
+print("5 to convert decimal numbers to characters")
+print("6 to convert binary number to character (only one)") # Signs can be composed of different numbers of bytes
+print("7 to convert bytes to characters (only for one-byted characters, BYTES HAVE TO BE SEPARATED BY SPACE)")
 print()
 
 def binary_to_decimal():
@@ -68,51 +69,51 @@ def decimal_to_binary():
   return (binary(input("Enter a decimal number: ")))
 
 def signs_to_bytes():
-  signs = input("Enter a message: ")
+  message = input("Enter a message: ")
   byt = ""
-  for i in signs:
+  for i in message:
     byt += bytes(binary(str(ord(i)))) + " "
   byt = byt[:-1]
   return byt
     
 def signs_to_decimal():
-  signs = input("Enter a message: ")
+  message = input("Enter a message: ")
   decimal = ""
-  for i in signs:
+  for i in message:
     decimal += str(ord(i)) + " "
   decimal = decimal[:-1]
   return decimal
 
 def decimal_to_signs():
   dec = input("Enter numbers: ").split(" ")
-  signs = ""
+  characters = ""
   for i in dec:
     try:
       i = int(i)
     except:
       raise ValueError("It's not a decimal number")
-    signs += str(chr(i))
-  return signs
+    characters += str(chr(i))
+  return characters
 
-def binary_to_one_sign():
+def binary_to_one_character():
   return chr(decimal(input("Enter a binary number: ")))
   
-def bytes_to_signs():
+def bytes_to_characters():
   bin_ = input("Enter bytes: ").split(" ")
-  signs = ""
+  characters = ""
   for i in bin_:
     if len(i) != 8:
       raise ValueError("There is a string in value which isn't a byte, byte contains 8 bites")
-    signs += str(chr(decimal(i)))
-  return signs
+    characters += str(chr(decimal(i)))
+  return characters
 user_menu = {
   "1": binary_to_decimal,
   "2": decimal_to_binary,
   "3": signs_to_bytes,
   "4": signs_to_decimal,
   "5": decimal_to_signs, 
-  "6": binary_to_one_sign,
-  "7": bytes_to_signs
+  "6": binary_to_one_character,
+  "7": bytes_to_characters
 }
 user_answer = input("Enter the appropriate number: ")
 if user_answer not in user_menu.keys():
