@@ -43,7 +43,7 @@ def decimal(bin_):
       dec += 2**(len(bin_)-i-1)
   return dec
 
-def bytes(bin_):
+def string_bytes(bin_):
   byt = ""
   while len(bin_)%8 != 0:
     bin_ = "0" + bin_  # The length of the binary's value has to be divisible by 8 because byte contains 8 bies
@@ -72,7 +72,7 @@ def signs_to_bytes():
   message = input("Enter a message: ")
   byt = ""
   for i in message:
-    byt += bytes(binary(str(ord(i)))) + " "
+    byt += string_bytes(binary(str(ord(i)))) + " "
   byt = byt[:-1]
   return byt
     
@@ -99,7 +99,7 @@ def binary_to_one_character():
   return chr(decimal(input("Enter a binary number: ")))
   
 def bytes_to_characters():
-  bin_ = input("Enter bytes: ").split(" ")
+  bin_ = input("Enter bytes (every byte is an eight-digit binary number): ").split(" ")
   characters = ""
   for i in bin_:
     if len(i) != 8:
